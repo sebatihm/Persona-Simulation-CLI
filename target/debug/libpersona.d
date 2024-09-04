@@ -1,0 +1,1 @@
+C:\Users\ZS22017007\Documents\RUST\structs\target\debug\libpersona.rlib: C:\Users\ZS22017007\Documents\RUST\structs\persona\src\lib.rs C:\Users\ZS22017007\Documents\RUST\structs\persona\src\persona\mod.rs
