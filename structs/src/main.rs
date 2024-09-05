@@ -13,7 +13,7 @@ fn main() {
         println!("(A) Skill");
         println!("(B) Attack");
         println!("(C) Persona");
-        println!("(D) Object");
+        println!("(D) Recover");
         println!("(E) Guard");
         println!("(F) Flee");
     }    

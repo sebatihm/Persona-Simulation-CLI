@@ -3,11 +3,11 @@ pub struct Persona{
     name: String,
     arcana: String,
     weakness: String,
-    skill: skill,
+    skill: Skill,
 }
 
 impl Persona{
-    pub fn persona(name: String,arcana: String,weakness: String,skill: skill) -> Self{
+    pub fn from(name: String,arcana: String,weakness: String,skill: Skill) -> Self{
         
         Self {
             name:name,
@@ -18,11 +18,11 @@ impl Persona{
 
     }
 
-    pub fn persona_default() -> Self{
+    pub fn new() -> Self{
         Self {
             name:String::from("Oprpheus"),
             arcana: String::from("Fool"),
-            skill: skill::skill_default(),
+            skill: Skill::new(),
             weakness: String::from("Wind")
         }
 
@@ -32,12 +32,16 @@ impl Persona{
         println!("Persona: {}\nArcana: {}\nWeakness: {}",self.name,self.arcana,self.weakness);
     }
 
-    pub fn get_name(&self) -> &str{
-        &self.name
+    pub fn get_name(&self) -> String{
+        String::from(&self.name)
     }
 
-    pub fn get_weakness(&self) -> &str{
-        &self.weakness
+    pub fn get_weakness(&self) -> String{
+        String::from(&self.weakness)
+    }
+
+    pub fn get_skill(&self) -> &Skill{
+        &self.skill
     }
 
     // pub fn set_name(&mut self, named: String){

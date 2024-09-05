@@ -12,7 +12,7 @@ impl Character{
             name: String::from("Makoto Yuki"),
             hp: 230,
             sp: 167,
-            persona: Persona::persona_default()   
+            persona: Persona::new()   
         }
 
         
@@ -30,7 +30,7 @@ impl Character{
         self.sp = self.sp + sp;
     }
 
-    pub fn get_sp(&mut self, hp:u32) -> u32{
+    pub fn get_sp(&mut self) -> u32{
         self.sp 
     }
 
@@ -41,6 +41,19 @@ impl Character{
     pub fn attack(&mut self, character: &mut Character){
         let health = character.get_hp();
         character.set_hp(health-30);
+    }
+
+    pub fn use_skill(&mut self,character: &mut Character){
+        if character.persona.get_weakness() == self.persona.get_skill().get_atrribute(){
+            print!("Critical Damage");
+            let health = character.get_hp();
+            character.set_hp(health-(self.persona.get_skill().get_damage()* 2));
+        } else {
+            let health = character.get_hp();
+            character.set_hp(health-self.persona.get_skill().get_damage());
+        }
+
+        self.set_sp(self.sp - self.persona.get_skill().get_sp_consumed());
     }
 
     pub fn recover(&mut self){
