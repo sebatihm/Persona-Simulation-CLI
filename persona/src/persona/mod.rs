@@ -1,49 +1,49 @@
+use crate::skill::*;
 pub struct Persona{
     name: String,
     arcana: String,
     weakness: String,
-    skill: String,
-    hp: u32,
-    sp: u32
+    skill: skill,
 }
 
 impl Persona{
-    pub fn persona(name: String,arcana: String,weakness: String,skill: String, hp: u32,sp: u32) -> Self{
+    pub fn persona(name: String,arcana: String,weakness: String,skill: skill) -> Self{
         
         Self {
             name:name,
             arcana: arcana,
-            hp: hp,
-            sp: sp,
             skill: skill,
             weakness: weakness
         }
 
     }
-    pub fn attack(&self, persona: &mut Persona){
-        println!("The persona {} uses {}.", self.name,self.skill);
 
-        if persona.weakness == self.skill{
-            print!("Critical Damage");
-            persona.hp = persona.hp - 50;
-        } else {
-            persona.hp = persona.hp - 20;
+    pub fn persona_default() -> Self{
+        Self {
+            name:String::from("Oprpheus"),
+            arcana: String::from("Fool"),
+            skill: skill::skill_default(),
+            weakness: String::from("Wind")
         }
 
-        
     }
 
-    pub fn recover(&mut self){
-        println!("{} uses Dia and recovers 35", self.name);
-        self.hp = self.hp + 50;
-    }
     pub fn info(&self){
-        println!("Persona: {}\nArcana: {}\nWeakness: {}\nSkill: {}\nHp remaining: {}\nSp remaining: {}",self.name,self.arcana,self.weakness,self.skill,self.hp,self.sp);
+        println!("Persona: {}\nArcana: {}\nWeakness: {}",self.name,self.arcana,self.weakness);
     }
 
-    pub fn check(persona: &Persona){
-        println!("The weakness is: {} !",persona.weakness);
+    pub fn get_name(&self) -> &str{
+        &self.name
     }
 
+    pub fn get_weakness(&self) -> &str{
+        &self.weakness
+    }
+
+    // pub fn set_name(&mut self, named: String){
+    //     self.name = named;
+    // }
+    // Idk if should implement
+    
 
 }
