@@ -1,4 +1,5 @@
 use crate::persona::*;
+use crate::shadows::*;
 pub struct Character{
     name: String,
     hp: u32,
@@ -7,19 +8,26 @@ pub struct Character{
 }
 
 impl Character{
-    pub fn character_default() -> Self{
+    pub fn new() -> Self{
         Self{
             name: String::from("Makoto Yuki"),
             hp: 230,
             sp: 167,
             persona: Persona::new()   
-        }
+        }    
+    }
 
-        
+    pub fn from(name: String, hp: u32,sp: u32, persona: Persona) -> Self{
+        Self{
+            name: name,
+            hp: hp,
+            sp: sp,
+            persona: persona   
+        }    
     }
 
     pub fn set_hp(&mut self, hp:u32){
-        self.hp = self.hp + hp;
+        self.hp = hp;
     }
 
     pub fn get_hp(&mut self) -> u32{
@@ -27,7 +35,7 @@ impl Character{
     }
 
     pub fn set_sp(&mut self, sp:u32){
-        self.sp = self.sp + sp;
+        self.sp = sp;
     }
 
     pub fn get_sp(&mut self) -> u32{
@@ -38,22 +46,47 @@ impl Character{
         self.persona = persona;
     }
 
-    pub fn attack(&mut self, character: &mut Character){
-        let health = character.get_hp();
-        character.set_hp(health-30);
+    pub fn attack(&mut self, enemy: &mut Shadow){
+        let health = enemy.get_hp();
+        if health < 30{
+            enemy.set_hp(0);
+        } else {
+            enemy.set_hp(health-30);
+        }
+        
+        println!("The enemy is at {} hp", enemy.get_hp());
     }
 
-    pub fn use_skill(&mut self,character: &mut Character){
-        if character.persona.get_weakness() == self.persona.get_skill().get_atrribute(){
+    pub fn use_skill(&mut self,enemy: &mut Shadow){
+
+        if enemy.get_weakness() == self.persona.get_skill().get_atrribute(){
             print!("Critical Damage");
-            let health = character.get_hp();
-            character.set_hp(health-(self.persona.get_skill().get_damage()* 2));
+            let health = enemy.get_hp();
+
+            if health < 30{
+                enemy.set_hp(0);
+            } else {
+                enemy.set_hp(health-(self.persona.get_skill().get_damage()* 2));
+            }
+
         } else {
-            let health = character.get_hp();
-            character.set_hp(health-self.persona.get_skill().get_damage());
+            let health = enemy.get_hp();
+
+            if health < 30{
+                enemy.set_hp(0);
+            } else {
+                enemy.set_hp(health-self.persona.get_skill().get_damage());
+            }
         }
 
-        self.set_sp(self.sp - self.persona.get_skill().get_sp_consumed());
+        if self.sp < self.persona.get_skill().get_sp_consumed() {
+            self.set_sp(0);
+        } else {
+            self.set_sp(self.sp - (self.persona.get_skill().get_sp_consumed()));
+        }
+                
+        println!("The enemy is at {} hp", enemy.get_hp());
+        println!(" ..:: {} sp remaining ::..", self.sp);
     }
 
     pub fn recover(&mut self){
@@ -61,9 +94,18 @@ impl Character{
         self.hp = self.hp + 50;
     }
 
-    pub fn check(persona: &Persona){
-        println!("The weakness is: {} !",persona.get_weakness());
+    pub fn check(&self, enemy: &Shadow){
+        enemy.info();
     }
+
+    pub fn get_persona(&self) -> &Persona{
+        &self.persona
+    }
+
+    pub fn get_name(&self) -> String{
+        String::from(&self.name)
+    }
+
 
     
 }

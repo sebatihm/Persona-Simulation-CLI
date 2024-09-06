@@ -20,7 +20,7 @@ impl Persona{
 
     pub fn new() -> Self{
         Self {
-            name:String::from("Oprpheus"),
+            name:String::from("Orpheus"),
             arcana: String::from("Fool"),
             skill: Skill::new(),
             weakness: String::from("Wind")
