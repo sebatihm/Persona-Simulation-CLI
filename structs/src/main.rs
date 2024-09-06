@@ -25,12 +25,24 @@ fn main() {
         }else if option == 'E'{
             println!("{} waits ...", hero.get_name());
         }else if option == 'F'{
+            hero.check(&shadow);
+            continue;
+        }else if option == 'G'{
             println!("You cant escape");
             println!("Fight!");
         }else {
             println!("You didn't choose a valid option you lose a turn");  
         }
 
+        if hero.get_hp() == 0{
+            println!(" ....:::: Defeat ::::.... ");
+            println!(" You've been defeated");
+            break;
+        }else if shadow.get_hp() == 0{
+            println!("\n\n\n ....:::: Congratulations ::::.... ");
+            println!(" You have won the battle\n\n\n\n");
+            break;
+        }
 
 
     }
@@ -44,8 +56,9 @@ fn turn() -> char{
     println!("(C) Persona");
     println!("(D) Recover");
     println!("(E) Guard");
-    println!("(F) Flee");
-    println!("''::          ::''");
+    println!("(F) Check");
+    println!("(G) Flee");
+    println!("'':: ::::::: ::''");
 
     println!("Insert command: ");
 

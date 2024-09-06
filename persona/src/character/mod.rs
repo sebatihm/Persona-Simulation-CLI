@@ -4,7 +4,8 @@ pub struct Character{
     name: String,
     hp: u32,
     sp: u32,
-    persona: Persona
+    persona: Persona,
+    max_hp:u32
 }
 
 impl Character{
@@ -13,7 +14,8 @@ impl Character{
             name: String::from("Makoto Yuki"),
             hp: 230,
             sp: 167,
-            persona: Persona::new()   
+            persona: Persona::new(),  
+            max_hp: 230 
         }    
     }
 
@@ -22,7 +24,8 @@ impl Character{
             name: name,
             hp: hp,
             sp: sp,
-            persona: persona   
+            persona: persona,
+            max_hp: hp   
         }    
     }
 
@@ -90,8 +93,14 @@ impl Character{
     }
 
     pub fn recover(&mut self){
-        println!("{} uses Dia and recovers 35", self.persona.get_name());
-        self.hp = self.hp + 50;
+        if self.hp + 35 >= self.max_hp{
+            println!("{} uses Dia and recovers totally", self.persona.get_name());
+            self.hp = self.max_hp;
+        }else{
+            println!("{} uses Dia and recovers 35", self.persona.get_name());
+            self.hp = self.hp + 35;
+        }
+        
     }
 
     pub fn check(&self, enemy: &Shadow){

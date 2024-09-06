@@ -4,7 +4,8 @@ pub struct Shadow{
     arcana: String,
     weakness: String,
     skill: Skill,
-    hp: u32
+    hp: u32,
+    max_hp: u32
 }
 
 impl Shadow{
@@ -15,7 +16,8 @@ impl Shadow{
             arcana: arcana,
             skill: skill,
             weakness: weakness,
-            hp: hp
+            hp: hp,
+            max_hp: hp
         }
 
     }
@@ -26,7 +28,8 @@ impl Shadow{
             arcana: String::from("Fool"),
             skill: Skill::new(),
             weakness: String::from("Agi"),
-            hp: 100
+            hp: 100,
+            max_hp: 100
         }
 
     }
