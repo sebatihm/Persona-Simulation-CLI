@@ -1,4 +1,5 @@
 use crate::skill::*;
+use crate::character::*;
 pub struct Shadow{
     name: String,
     arcana: String,
@@ -27,7 +28,7 @@ impl Shadow{
             name:String::from("Cowardly Maya"),
             arcana: String::from("Fool"),
             skill: Skill::new(),
-            weakness: String::from("Agi"),
+            weakness: String::from("Fire"),
             hp: 100,
             max_hp: 100
         }
@@ -56,6 +57,53 @@ impl Shadow{
 
     pub fn get_skill(&self) -> &Skill{
         &self.skill
+    }
+
+    pub fn recover(&mut self){
+        if self.hp + 35 >= self.max_hp{
+            println!("{} uses Dia and recovers totally", self.name);
+            self.hp = self.max_hp;
+        }else{
+            println!("{} uses Dia and recovers 35", self.name);
+            self.hp = self.hp + 35;
+        }
+        
+    }
+
+    pub fn use_skill(&self,enemy: &mut Character){
+
+        if enemy.get_persona().get_weakness() == self.get_skill().get_atrribute(){
+            println!("Critical");
+            let health = enemy.get_hp();
+
+            if health < (self.get_skill().get_damage()*2){
+                enemy.set_hp(0);
+            } else {
+                enemy.set_hp(health-(self.get_skill().get_damage()* 2));
+            }
+
+        } else {
+            let health = enemy.get_hp();
+
+            if health < self.get_skill().get_damage(){
+                enemy.set_hp(0);
+            } else {
+                enemy.set_hp(health-self.get_skill().get_damage());
+            }
+        }
+                
+        println!("You get damage :::::.. Current hp {}", enemy.get_hp());
+    }
+
+    pub fn attack(&self, enemy: &mut Character){
+        let health = enemy.get_hp();
+        if health < 30{
+            enemy.set_hp(0);
+        } else {
+            enemy.set_hp(health-30);
+        }
+        
+        println!("You get damage :::::::::::::......... \nCurrent hp: {}", enemy.get_hp());
     }
 
     

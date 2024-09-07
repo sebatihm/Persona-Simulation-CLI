@@ -1,10 +1,12 @@
 use persona::character::*;
 use persona::shadows::*;
 use std::io;
+use rand::Rng;
 
 fn main() {
     let mut hero = Character::new();
     let mut shadow = Shadow::new();
+
 
     println!("Memento Mori");
     println!("Battle!");
@@ -33,6 +35,19 @@ fn main() {
         }else {
             println!("You didn't choose a valid option you lose a turn");  
         }
+
+        println!(" .....::::: OPOUNENT TURN :::::.....");
+
+        let option_choice: u32 =  rand::thread_rng().gen_range(1..=4);
+
+        if option_choice == 1{
+            shadow.recover();
+        }else if option_choice == 2{
+            shadow.use_skill(&mut hero);
+        }else if option_choice == 3{
+            shadow.attack(&mut hero);
+        }
+
 
         if hero.get_hp() == 0{
             println!(" ....:::: Defeat ::::.... ");

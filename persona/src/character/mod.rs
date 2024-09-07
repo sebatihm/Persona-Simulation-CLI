@@ -49,7 +49,7 @@ impl Character{
         self.persona = persona;
     }
 
-    pub fn attack(&mut self, enemy: &mut Shadow){
+    pub fn attack(&self, enemy: &mut Shadow){
         let health = enemy.get_hp();
         if health < 30{
             enemy.set_hp(0);
@@ -63,19 +63,19 @@ impl Character{
     pub fn use_skill(&mut self,enemy: &mut Shadow){
 
         if enemy.get_weakness() == self.persona.get_skill().get_atrribute(){
-            print!("Critical Damage");
+            println!("Critical Damage");
             let health = enemy.get_hp();
 
-            if health < 30{
+            if health < (self.persona.get_skill().get_damage()*2){
                 enemy.set_hp(0);
             } else {
                 enemy.set_hp(health-(self.persona.get_skill().get_damage()* 2));
-            }
+            }            
 
         } else {
             let health = enemy.get_hp();
 
-            if health < 30{
+            if health < self.persona.get_skill().get_damage(){
                 enemy.set_hp(0);
             } else {
                 enemy.set_hp(health-self.persona.get_skill().get_damage());
