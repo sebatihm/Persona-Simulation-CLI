@@ -37,6 +37,7 @@ impl Shadow{
 
     pub fn info(&self){
         println!("..:: This is the information you seem to see ::.. \nName: {}\nArcana: {}\nWeakness: {}",self.name,self.arcana,self.weakness);
+        println!("..:::::::::::::::::::::::::::::::::::::::::::..\n");
     }
 
     pub fn set_hp(&mut self, hp:u32){
@@ -92,7 +93,7 @@ impl Shadow{
             }
         }
                 
-        println!("You get damage :::::.. Current hp {}", enemy.get_hp());
+        println!("You get damage :::::.. \n:::: Current hp {}", enemy.get_hp());
     }
 
     pub fn attack(&self, enemy: &mut Character){
@@ -103,7 +104,7 @@ impl Shadow{
             enemy.set_hp(health-30);
         }
         
-        println!("You get damage :::::::::::::......... \nCurrent hp: {}", enemy.get_hp());
+        println!("You get damage :::::.. \n:::: Current hp: {}", enemy.get_hp());
     }
 
     

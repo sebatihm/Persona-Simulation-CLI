@@ -1,6 +1,6 @@
-C:\Users\ZS22017007\Documents\RUST\Persona-Simulation-CLI\target\debug\build\proc-macro2-e5693189d3abac4c\out\libproc_macro2.rmeta: build\probe.rs
+C:\Users\sebas\OneDrive\Documentos\Rust\Persona-Simulation-CLI\target\debug\build\proc-macro2-e5693189d3abac4c\out\libproc_macro2.rmeta: build\probe.rs
 
-C:\Users\ZS22017007\Documents\RUST\Persona-Simulation-CLI\target\debug\build\proc-macro2-e5693189d3abac4c\out\proc_macro2.d: build\probe.rs
+C:\Users\sebas\OneDrive\Documentos\Rust\Persona-Simulation-CLI\target\debug\build\proc-macro2-e5693189d3abac4c\out\proc_macro2.d: build\probe.rs
 
 build\probe.rs:
 

@@ -3,6 +3,14 @@
 version = 3
 
 [[package]]
+name = "battle"
+version = "0.1.0"
+dependencies = [
+ "persona",
+ "rand",
+]
+
+[[package]]
 name = "byteorder"
 version = "1.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -94,8 +102,9 @@ dependencies = [
 
 [[package]]
 name = "structs"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
+ "battle",
  "persona",
  "rand",
 ]

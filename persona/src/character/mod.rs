@@ -69,7 +69,7 @@ impl Character{
             if health < (self.persona.get_skill().get_damage()*2){
                 enemy.set_hp(0);
             } else {
-                enemy.set_hp(health-(self.persona.get_skill().get_damage()* 2));
+                enemy.set_hp(health-((self.persona.get_skill().get_damage())*2));
             }            
 
         } else {
@@ -89,7 +89,7 @@ impl Character{
         }
                 
         println!("The enemy is at {} hp", enemy.get_hp());
-        println!(" ..:: {} sp remaining ::..", self.sp);
+        println!(":::: {} sp remaining ::..", self.sp);
     }
 
     pub fn recover(&mut self){
@@ -100,6 +100,7 @@ impl Character{
             println!("{} uses Dia and recovers 35", self.persona.get_name());
             self.hp = self.hp + 35;
         }
+        println!(":::: Current hp: {}", self.hp);
         
     }
 

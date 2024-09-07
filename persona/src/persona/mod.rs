@@ -29,7 +29,11 @@ impl Persona{
     }
 
     pub fn info(&self){
+        println!(":::::::::::::::::::::::::::");
+
         println!("Persona: {}\nArcana: {}\nWeakness: {}",self.name,self.arcana,self.weakness);
+
+        println!(":::::::::::::::::::::::::::\n");
     }
 
     pub fn get_name(&self) -> String{
