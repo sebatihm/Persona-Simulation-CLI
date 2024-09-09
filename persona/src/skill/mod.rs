@@ -1,6 +1,6 @@
 pub struct Skill{
     name: String,
-    atrribute: String,
+    atrribute: damage_type,
     damage: u32,
     sp_consumed: u32
 }
@@ -10,14 +10,14 @@ impl Skill{
     pub fn new() -> Self{
         Self{
             name: String::from("Agi"),
-            atrribute: String::from("Fire"),
+            atrribute: damage_type::Fire,
             damage: 30,
             sp_consumed: 3
         }
     }
 
-    pub fn get_atrribute(&self) -> String{
-        String::from(&self.atrribute)
+    pub fn get_atrribute(&self) -> &damage_type{
+        &self.atrribute
     }
 
     pub fn get_name(&self) -> String{
@@ -32,4 +32,18 @@ impl Skill{
         self.sp_consumed
     }
 
+}
+
+#[derive(Debug,PartialEq, Eq)]
+pub enum damage_type  {
+    Slash,
+    Strike,
+    Pierce,
+    Fire,
+    Ice,
+    Electric,
+    Wind,
+    Light,
+    Dark,
+    Ulmighty
 }

@@ -3,14 +3,14 @@ use crate::character::*;
 pub struct Shadow{
     name: String,
     arcana: String,
-    weakness: String,
+    weakness: damage_type,
     skill: Skill,
     hp: u32,
     max_hp: u32
 }
 
 impl Shadow{
-    pub fn from(name: String,arcana: String,weakness: String,skill: Skill, hp:u32) -> Self{
+    pub fn from(name: String,arcana: String,weakness: damage_type,skill: Skill, hp:u32) -> Self{
         
         Self {
             name:name,
@@ -28,7 +28,7 @@ impl Shadow{
             name:String::from("Cowardly Maya"),
             arcana: String::from("Fool"),
             skill: Skill::new(),
-            weakness: String::from("Fire"),
+            weakness: damage_type::Fire,
             hp: 100,
             max_hp: 100
         }
@@ -36,7 +36,7 @@ impl Shadow{
     }
 
     pub fn info(&self){
-        println!("..:: This is the information you seem to see ::.. \nName: {}\nArcana: {}\nWeakness: {}",self.name,self.arcana,self.weakness);
+        println!("..:: This is the information you seem to see ::.. \nName: {}\nArcana: {}\nWeakness: {:?}",self.name,self.arcana,self.weakness);
         println!("..:::::::::::::::::::::::::::::::::::::::::::..\n");
     }
 
@@ -52,8 +52,8 @@ impl Shadow{
         String::from(&self.name)
     }
 
-    pub fn get_weakness(&self) -> String{
-        String::from(&self.weakness)
+    pub fn get_weakness(&self) -> &damage_type{
+        &self.weakness
     }
 
     pub fn get_skill(&self) -> &Skill{
