@@ -76,8 +76,16 @@ fn main() {
     }
     
 
-
     println!("Memento Mori");
+    println!("Thanks for trying this thing!\n(Press Any Key To exit)");
+    let mut option: String = String::new();
+
+    io::stdin()
+        .read_line(&mut option)
+        .expect("Something went wrong")
+    ;
+
+    
     
 }
 
