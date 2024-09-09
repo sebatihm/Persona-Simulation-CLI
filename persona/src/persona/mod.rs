@@ -2,12 +2,12 @@ use crate::skill::*;
 pub struct Persona{
     name: String,
     arcana: String,
-    weakness: damage_type,
+    weakness: AbilityType,
     skill: Skill,
 }
 
 impl Persona{
-    pub fn from(name: String,arcana: String,weakness: damage_type,skill: Skill) -> Self{
+    pub fn from(name: String,arcana: String,weakness: AbilityType,skill: Skill) -> Self{
         
         Self {
             name:name,
@@ -22,8 +22,8 @@ impl Persona{
         Self {
             name:String::from("Orpheus"),
             arcana: String::from("Fool"),
-            skill: Skill::new(),
-            weakness: damage_type::Wind
+            skill: Skill::agi(),
+            weakness: AbilityType::Wind
         }
 
     }
@@ -40,7 +40,7 @@ impl Persona{
         String::from(&self.name)
     }
 
-    pub fn get_weakness(&self) -> &damage_type{
+    pub fn get_weakness(&self) -> &AbilityType{
         &self.weakness
     }
 
@@ -48,10 +48,6 @@ impl Persona{
         &self.skill
     }
 
-    // pub fn set_name(&mut self, named: String){
-    //     self.name = named;
-    // }
-    // Idk if should implement
     
 
 }

@@ -3,14 +3,14 @@ use crate::character::*;
 pub struct Shadow{
     name: String,
     arcana: String,
-    weakness: damage_type,
+    weakness: AbilityType,
     skill: Skill,
     hp: u32,
     max_hp: u32
 }
 
 impl Shadow{
-    pub fn from(name: String,arcana: String,weakness: damage_type,skill: Skill, hp:u32) -> Self{
+    pub fn from(name: String,arcana: String,weakness: AbilityType,skill: Skill, hp:u32) -> Self{
         
         Self {
             name:name,
@@ -28,7 +28,7 @@ impl Shadow{
             name:String::from("Cowardly Maya"),
             arcana: String::from("Fool"),
             skill: Skill::new(),
-            weakness: damage_type::Fire,
+            weakness: AbilityType::Fire,
             hp: 100,
             max_hp: 100
         }
@@ -52,7 +52,7 @@ impl Shadow{
         String::from(&self.name)
     }
 
-    pub fn get_weakness(&self) -> &damage_type{
+    pub fn get_weakness(&self) -> &AbilityType{
         &self.weakness
     }
 

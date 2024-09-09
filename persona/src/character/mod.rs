@@ -66,10 +66,10 @@ impl Character{
             println!("Critical Damage");
             let health = enemy.get_hp();
 
-            if health < (self.persona.get_skill().get_damage()*2){
+            if health < (self.persona.get_skill().get_damage() as f32 *1.2) as u32{
                 enemy.set_hp(0);
             } else {
-                enemy.set_hp(health-((self.persona.get_skill().get_damage())*2));
+                enemy.set_hp(health-((self.persona.get_skill().get_damage()) as f32*1.2) as u32);
             }            
 
         } else {
