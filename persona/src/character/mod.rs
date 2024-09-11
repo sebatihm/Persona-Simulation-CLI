@@ -1,10 +1,11 @@
 use crate::persona::*;
 use crate::shadows::*;
+use crate::skill;
 pub struct Character{
     name: String,
     hp: u32,
     sp: u32,
-    persona: Persona,
+    personas: Vec<Persona>,
     max_hp:u32
 }
 
@@ -14,17 +15,17 @@ impl Character{
             name: String::from("Makoto Yuki"),
             hp: 230,
             sp: 167,
-            persona: Persona::new(),  
+            personas: vec![Persona::new()],  
             max_hp: 230 
         }    
     }
 
-    pub fn from(name: String, hp: u32,sp: u32, persona: Persona) -> Self{
+    pub fn from(name: String, hp: u32,sp: u32, persona: Vec<Persona>) -> Self{
         Self{
             name: name,
             hp: hp,
             sp: sp,
-            persona: persona,
+            personas: persona,
             max_hp: hp   
         }    
     }
@@ -46,7 +47,7 @@ impl Character{
     }
 
     pub fn add_persona(&mut self,persona: Persona){
-        self.persona = persona;
+        self.personas.push(persona);
     }
 
     pub fn attack(&self, enemy: &mut Shadow){
@@ -60,7 +61,7 @@ impl Character{
         println!("The enemy is at {} hp", enemy.get_hp());
     }
 
-    pub fn use_skill(&mut self,enemy: &mut Shadow){
+    pub fn use_skill(&mut self,enemy: &mut Shadow, &skill){
 
         if enemy.get_weakness() == self.persona.get_skill().get_atrribute(){
             println!("Critical Damage");

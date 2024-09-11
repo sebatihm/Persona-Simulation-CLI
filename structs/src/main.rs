@@ -71,8 +71,6 @@ fn main() {
 
     if option == 'Y'{
         battles::battle(&mut hero,&mut shadow);
-    }else{
-        println!("Thank you for trying this!");
     }
     
 
